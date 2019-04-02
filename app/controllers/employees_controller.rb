@@ -12,30 +12,37 @@ class EmployeesController < ApplicationController
   def show
   end
 
+  #view employees below 18 years old
   def younger 
       @employees = Employee.younger_than_18.alphabetical.paginate(page: params[:page]).per_page(10)
   end
-    
+
+  #view employees who are 18 or older  
   def older
       @employees = Employee.is_18_or_older.alphabetical.paginate(page: params[:page]).per_page(10)
   end
-    
+  
+  #view only active employees
   def active
       @employees = Employee.active.alphabetical.paginate(page: params[:page]).per_page(10)
   end
-    
+
+  #view inactive employees
   def inactive
       @employees = Employee.inactive.alphabetical.paginate(page: params[:page]).per_page(10)
   end
-    
+   
+  #view employees only
   def regulars
       @employees = Employee.regulars.alphabetical.paginate(page: params[:page]).per_page(10)
   end
-    
+  
+  #view managers only
   def managers
       @employees = Employee.managers.alphabetical.paginate(page: params[:page]).per_page(10)
   end
-    
+
+  #view admins only
   def admins
       @employees = Employee.admins.alphabetical.paginate(page: params[:page]).per_page(10)
   end

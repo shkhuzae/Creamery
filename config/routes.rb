@@ -21,9 +21,10 @@ Rails.application.routes.draw do
   get 'past' => 'assignments#past', as: :past_assignments
   get 'by_store' => 'assignments#by_store', as: :bystore_assignments
   get 'by_employee' => 'assignments#by_employee', as: :byemployee_assignments
-  get 'forstore/id' => 'assignments#forstore', as: :forstore_assignments
-  get 'foremployee/id' => 'assignments#foremployee', as: :foremployee_assignments
-
+  get 'for_store' => 'assignments#for_store', as: :forstore_assignments
+  get 'for_employee' => 'assignments#for_employee', as: :foremployee_assignments
+  get 'for_paylevel' => 'assignments#for_paylevel', as: :forpaylevel_assignments
+  get 'for_role' => 'assignments#for_role', as: :forrole_assignments
   
   
 end

@@ -12,29 +12,46 @@ class AssignmentsController < ApplicationController
   def show
   end
 
+  #for current employees
   def current
       @assignments = Assignment.current.chronological.paginate(page: params[:page]).per_page(10)
   end
-    
+  
+  #for past employees    
   def past
       @assignments = Assignment.past.chronological.paginate(page: params[:page]).per_page(10)
   end
 
+  #order assignments by store name
   def by_store
       @assignments = Assignment.by_store.chronological.paginate(page: params[:page]).per_page(10)
   end    
 
+  #order assignments by employee
   def by_employee
       @assignments = Assignment.by_employee.chronological.paginate(page: params[:page]).per_page(10)
   end     
 
+  #for a specific store in this case store 1
   def for_store
-      @assignments = Assignment.for_store(store_id).chronological.paginate(page: params[:page]).per_page(10)
+      @assignments = Assignment.for_store(1).chronological.paginate(page: params[:page]).per_page(10)
   end
   
+  #for specific employees in this case employee 1
   def for_employee
-      @assignments = Assignment.for_employee(employee_id).chronological.paginate(page: params[:page]).per_page(10)
+      @assignments = Assignment.for_employee(1).chronological.paginate(page: params[:page]).per_page(10)
   end
+ 
+  #for specific pay levels in this case 3
+  def for_paylevel
+      @assignments = Assignment.for_pay_level(3).chronological.paginate(page: params[:page]).per_page(10)
+  end
+
+  #for specific role in this case admin
+  def for_role
+      @assignments = Assignment.for_role("admin").chronological.paginate(page: params[:page]).per_page(10)
+  end
+  
 
   # GET /assignments/new
   def new
