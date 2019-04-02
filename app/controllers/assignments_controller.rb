@@ -52,7 +52,6 @@ class AssignmentsController < ApplicationController
       @assignments = Assignment.for_role("admin").chronological.paginate(page: params[:page]).per_page(10)
   end
   
-
   # GET /assignments/new
   def new
     @assignment = Assignment.new

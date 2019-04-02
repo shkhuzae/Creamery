@@ -14,12 +14,12 @@ class StoresController < ApplicationController
 
   #view active stores only
   def active
-        @stores = Store.active.alphabetical.paginate(page: params[:page]).per_page(10)
+      @stores = Store.active.alphabetical.paginate(page: params[:page]).per_page(10)
   end
   
   #view inactive stores only
   def inactive
-        @stores = Store.inactive.alphabetical.paginate(page: params[:page]).per_page(10)
+      @stores = Store.inactive.alphabetical.paginate(page: params[:page]).per_page(10)
   end
 
   # GET /stores/new
