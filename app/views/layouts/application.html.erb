@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <title>A&M Creamery</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    
+  </head>
+
+  <body>
+  
+    <% flash.each do |message_type, message| %>
+    <div class="alert alert-<%= message_type %>"><%= message %></div>
+    <% end %>
+    
+    <div class="container-fluid" >
+
+		    
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #B0EEEE;">
+  <a class="navbar-brand" href="/">A & M Creamery </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+
+      <li class="nav-item">
+        <a class="nav-link" href="/stores">Stores</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/employees">Employees</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/assignments">Assignments</a>
+      </li>
+      
+    </ul>
+    <span class="nav-item">
+      <a class="nav-link" href="/login">Login</a>
+    </span>
+    
+  </div>
+  
+</nav>
+</div>
+
+ <div class="p-3 mb-2 text-black" style="background-color: #FCFAFC;"> 
+ <h5> Life your spirit, order an icecream! </h5>
+ <%= yield %>
+ </div>
+    
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<div class="container">
+    <div class="row">
+        <div class="col-md-5">
+            <div class="well well-sm">
+                <form>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="name">
+                                Name</label>
+                            <input type="text" class="form-control" id="name" placeholder="Enter name" required="required" />
+                        </div>
+                        <div class="form-group">
+                            <label for="email">
+                                Email Address</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span>
+                                </span>
+                                <input type="email" class="form-control" id="email" placeholder="Enter email" required="required" /></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">
+                                Subject</label>
+                            <select id="subject" name="subject" class="form-control" required="required">
+                                <option value="na" selected="">Choose One:</option>
+                                <option value="service">General Customer Service</option>
+                                <option value="suggestions">Suggestions</option>
+                                <option value="product">Product Support</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="name">
+                                Message</label>
+                            <textarea name="message" id="message" class="form-control" rows="9" cols="25" required="required"
+                                placeholder="Message"></textarea>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <button type="submit" class="btn btn-primary pull-right" id="btnContactUs">
+                            Send Message</button>
+                    </div>
+                </div>
+                </form>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <form>
+            <legend><span class="glyphicon glyphicon-globe"></span>Our office</legend>
+            <address>
+                <strong>A & M Creamery.</strong><br>
+                500 Forbes Ave, CMU<br>
+                Pittsburgh, PA 15213<br>
+                <abbr title="Phone">
+                    P:</abbr>
+                (412) 268-3259
+     
+            </address>
+            <address>
+                <strong>Full Name</strong><br>
+                <a href="mailto:#">andm@gmail.com</a>
+            </address>
+            </form>
+        </div>
+    </div>
+</div>
+<br/>
+
+  </body>
+  <footer>
+ <div class="row">
+ <div class="col s8 center">
+ <%= render partial: 'partials/footer' %>
+ </div>
+ </div>
+ </footer>
+</html>
