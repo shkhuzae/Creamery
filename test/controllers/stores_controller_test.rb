@@ -32,6 +32,16 @@ class StoresControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test "should show active stores" do
+    get active_stores_path
+    assert_response :success
+  end
+
+  test "should show inactive stores" do
+    get inactive_stores_path
+    assert_response :success
+  end
+  
   test "should get edit" do
     get edit_store_url(@cmu)
     assert_response :success

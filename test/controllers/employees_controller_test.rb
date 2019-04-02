@@ -32,6 +32,41 @@ class EmployeesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test "should show younger employees" do
+    get younger_employees_path
+    assert_response :success
+  end
+  
+  test "should show older employees" do
+    get older_employees_path
+    assert_response :success
+  end
+  
+  test "should show active employees" do
+    get active_employees_path
+    assert_response :success
+  end
+  
+  test "should show inactive employees" do
+    get inactive_employees_path
+    assert_response :success
+  end
+  
+  test "should show regular employees" do
+    get regular_employees_path
+    assert_response :success
+  end
+  
+  test "should show admins" do
+    get admins_employees_path
+    assert_response :success
+  end
+
+  test "should show managers" do
+    get managers_employees_path
+    assert_response :success
+  end
+  
   test "should get edit" do
     get edit_employee_url(@cindy)
     assert_response :success
