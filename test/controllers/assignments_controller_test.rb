@@ -36,6 +36,26 @@ class AssignmentsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test "should show current assignments" do
+    get current_assignments_path
+    assert_response :success
+  end
+  
+  test "should show past assignments" do
+    get past_assignments_path
+    assert_response :success
+  end
+ 
+  test "should show assignments by store" do
+    get bystore_assignments_path
+    assert_response :success
+  end 
+
+  test "should show assignments by employee" do
+    get byemployee_assignments_path
+    assert_response :success
+  end 
+
   test "should get edit" do
     get edit_assignment_url(@assign_ben)
     assert_response :success
