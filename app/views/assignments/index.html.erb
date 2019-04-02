@@ -1,59 +1,67 @@
-<%= form_for(@assignment) do |f| %>
-  <% if @assignment.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@assignment.errors.count, "error") %> prohibited this assignment from being saved:</h2>
+    <div class="container-fluid" >
 
-      <ul>
-      <% @assignment.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+		    
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #F0EFEE;">
 
-<div class="form-row">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+
+      <li class="nav-item">
+        <span class="nav-link"><%= link_to 'Current', current_assignments_path %></span> 
+      </li>
+      <li class="nav-item">
+        <span class="nav-link"><%= link_to 'Past', past_assignments_path %></span> 
+      </li>
+      <li class="nav-item">
+       <span class="nav-link"><%= link_to 'By Store', bystore_assignments_path %></span> 
+      </li>
+      <li class="nav-item">
+       <span class="nav-link"><%= link_to 'By Employee', byemployee_assignments_path %></span>
+      </li>
+    </ul>
+
+    
+  </div>
   
-      <div class="form-group col-md-4">
-      <label for="store_id"><%= f.label :store_id %></label>
-      <%= f.text_field :store_id, :class => "form-control" %>
-      </div>
+</nav>
+</div>
+
+
+
+<%= link_to 'New Assignment', new_assignment_path %>
+<table class="table table-striped">
+  <thead>
+    <tr>
+
+      <th scope="col">Assignment</th>
+      <th scope="col">Edit</th>
+      <th scope="col">Delete</th>
+ 
+    </tr>
+  </thead>
+  <tbody>
+    
       
-      <div class="form-group col-md-4">
-      <label for="employee_id"><%= f.label :employee_id %></label>
-      <%= f.text_field :employee_id, :class => "form-control" %>
-      </div>
-
-</div>
-
-<div class="form-row">
-  
-  <div class="form-group col-md-2">
-    <label for="start_date"><%= f.label :start_date %></label>
-    <%= f.text_field :start_date, :class => "form-control" %>
-  </div>
-  
-  <div class="form-group col-md-4">
-      <label for="end_date"><%= f.label :end_date %></label>
-      <%= f.text_field :end_date, :class => "form-control" %>
-  </div>
+      <% @assignments.each do |assignment| %>
+        <tr>
+          <td><%= link_to assignment.id, assignment_path(assignment) %></td>
+          <td><%= link_to 'Edit', edit_assignment_path(assignment), :class=> "btn btn-warning" %></td>
+          <td><%= link_to 'Destroy', assignment, confirm: 'Are you sure?', method: :delete, :class=> "btn btn-danger" %></td>
+        </tr>
+      <% end %>
     
     
-</div>
+  </tbody>
+</table>
 
 
-<div class="form-row">
-  
-  <div class="form-group col-md-4">
-      <label for="pay_level"><%= f.label :pay_level %></label>
-      <%= f.text_field :pay_level, :class => "form-control" %>
-  </div>
-  
-</div>
+<br />
 
 
-  <%= f.submit "Submit", :class => 'btn btn-primary' %>
-<br/>
+<br />
 
-<br/>
- <% end %>
 
