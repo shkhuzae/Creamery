@@ -4,8 +4,10 @@ class EmployeeTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
-    should have_many(:assignments)
+  should have_many(:assignments)
   should have_many(:stores).through(:assignments)
+  should have_many(:shifts).through(:assignments)
+  should have_one(:user).dependent(:destroy)
   
   # Test basic validations
    should validate_presence_of(:first_name)
