@@ -1,29 +1,58 @@
-<p id="notice"><%= notice %></p>
+<!--navigation bar-->
+    <div class="container-fluid" >
 
-<h1>Flavors</h1>
+		    
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #F0EFEE;">
 
-<table>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+
+      <li class="nav-item">
+        <span class="nav-link"><%= link_to 'All', flavors_path %></span> 
+      </li>
+      
+
+    </ul>
+
+    
+  </div>
+  
+</nav>
+</div>
+
+
+<!--link to new employee-->
+<%= link_to 'New Flavor', new_flavor_path %>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Active</th>
-      <th colspan="3"></th>
+
+      <th scope="col">Flavor</th>
+      <th scope="col">Edit</th>
+      <th scope="col">Delete</th>
+ 
     </tr>
   </thead>
-
   <tbody>
-    <% @flavors.each do |flavor| %>
-      <tr>
-        <td><%= flavor.name %></td>
-        <td><%= flavor.active %></td>
-        <td><%= link_to 'Show', flavor %></td>
-        <td><%= link_to 'Edit', edit_flavor_path(flavor) %></td>
-        <td><%= link_to 'Destroy', flavor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
+    
+      
+      <% @flavors.each do |flavor| %>
+        <tr>
+          <td><%= link_to flavor.name, flavor_path(flavor) %></td>
+          <td><%= link_to 'Edit', edit_flavor_path(flavor), :class=> "btn btn-warning" %></td>
+          <td><%= link_to 'Inactivate', flavor, confirm: 'Are you sure?', method: :delete, :class=> "btn btn-danger" %></td>
+        </tr>
+      <% end %>
+    
+    
   </tbody>
 </table>
 
-<br>
 
-<%= link_to 'New Flavor', new_flavor_path %>
+<br />
+
+<br />

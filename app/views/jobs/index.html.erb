@@ -1,31 +1,58 @@
-<p id="notice"><%= notice %></p>
+<!--navigation bar-->
+    <div class="container-fluid" >
 
-<h1>Jobs</h1>
+		    
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #F0EFEE;">
 
-<table>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+
+      <li class="nav-item">
+        <span class="nav-link"><%= link_to 'All', jobs_path %></span> 
+      </li>
+      
+
+    </ul>
+
+    
+  </div>
+  
+</nav>
+</div>
+
+
+<!--link to new employee-->
+<%= link_to 'New Job', new_job_path %>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Active</th>
-      <th colspan="3"></th>
+
+      <th scope="col">Job</th>
+      <th scope="col">Edit</th>
+      <th scope="col">Delete</th>
+ 
     </tr>
   </thead>
-
   <tbody>
-    <% @jobs.each do |job| %>
-      <tr>
-        <td><%= job.name %></td>
-        <td><%= job.description %></td>
-        <td><%= job.active %></td>
-        <td><%= link_to 'Show', job %></td>
-        <td><%= link_to 'Edit', edit_job_path(job) %></td>
-        <td><%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
+    
+      
+      <% @jobs.each do |job| %>
+        <tr>
+          <td><%= link_to job.name, job_path(job) %></td>
+          <td><%= link_to 'Edit', edit_job_path(job), :class=> "btn btn-warning" %></td>
+          <td><%= link_to 'Inactivate', Job, confirm: 'Are you sure?', method: :delete, :class=> "btn btn-danger" %></td>
+        </tr>
+      <% end %>
+    
+    
   </tbody>
 </table>
 
-<br>
 
-<%= link_to 'New Job', new_job_path %>
+<br />
+
+<br />

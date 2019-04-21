@@ -11,17 +11,29 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
+<!--form attributes-->
+<div class="form-row">
+  
+      <div class="form-group col-md-4">
+      <label for="name"><%= form.label :name %></label>
+      <%= form.text_field :name, :class => "form-control" %>
+      </div>
 
-  <div class="field">
-    <%= form.label :active %>
-    <%= form.check_box :active %>
-  </div>
+</div>
 
-  <div class="actions">
-    <%= form.submit %>
+<div class="form-row">
+  
+  <div class="form-group col-md-2">
+    <label for="active"><%= form.label :active %></label>
+    <%= form.text_field :active, :class => "form-control" %>
   </div>
+  
+    
+</div>
+
+
+<%= form.submit "Submit", :class => 'btn btn-primary' %>
+<br/>
+
+<br/>
 <% end %>
