@@ -1,9 +1,56 @@
 require 'test_helper'
 
 class JobTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+
+  #testing relationships
   should have_many(:shift_jobs)
   should have_many(:shifts).through(:shift_jobs)
+  
+  #presence of name
+  should validate_presence_of(:name)
+  
+  #testing scopes
+  context "Creating a context for jobs" do
+    # create the objects I want with factories
+    setup do 
+      create_jobs
+    end
+    
+    # and provide a teardown method as well
+    teardown do
+      remove_jobs
+    end
+    
+     # test the scope 'alphabetical'
+    should "show that there are three jobs in alphabetical order" do
+      assert_equal ["Cashier", "Cleaning", "Mopping", "Washing"], Job.alphabetical.map{|j| j.name}
+    end
+    
+    # test the scope 'active'
+    should "show that there are three active jobs" do
+      assert_equal 3, Job.active.size
+    end
+    
+    # test the scope 'active'
+    should "show that there is one inactive job" do
+      assert_equal 1, Job.inactive.size
+    end
+    
+    should "make an undestroyable job inactive" do
+      create_employees
+      create_stores
+      create_assignments
+      create_shifts
+      create_shift_jobs
+      deny @cashier.destroy
+      @cashier.reload
+      deny @cashier.active
+      remove_shift_jobs
+      remove_employees
+      remove_stores
+      remove_assignments
+      remove_shifts
+    end
+    
+  end
 end

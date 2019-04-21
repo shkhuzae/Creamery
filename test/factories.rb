@@ -35,5 +35,16 @@ FactoryBot.define do
     end_time {"2:00pm".to_time}
     notes {"This is a great shift"}
   end
+  
+  factory :job do
+    name {"Cleaning"}
+    description {"Employees must clean the floor"}
+    active {true}
+  end
+  
+  factory :flavor do
+    name {"Raspberry"}
+    active {true}
+  end
 
 end
