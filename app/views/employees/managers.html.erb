@@ -2,7 +2,7 @@
     <div class="container-fluid" >
 
 		    
-    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #F0EFEE;">
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: white;">
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -12,30 +12,18 @@
     <ul class="navbar-nav mr-auto">
 
       <li class="nav-item">
-        <span class="nav-link"><%= link_to 'All', employees_path %></span> 
+        <a class="nav-link" href="/stores">Stores</a>
       </li>
       <li class="nav-item">
-        <span class="nav-link"><%= link_to 'Younger than 18', younger_employees_path %></span> 
-      </li>
-      <li class="nav-item">
-       <span class="nav-link"><%= link_to '18 or Older', older_employees_path %></span> 
-      </li>
-      <li class="nav-item">
-       <span class="nav-link"><%= link_to 'Active', active_employees_path %></span> 
-      </li>
-      <li class="nav-item">
-       <span class="nav-link"><%= link_to 'Inactive', inactive_employees_path %></span> 
-      </li>
-      <li class="nav-item">
-       <span class="nav-link"><%= link_to 'Regulars', regulars_employees_path %></span> 
-      </li>
-      <li class="nav-item">
-       <span class="nav-link"><%= link_to 'Managers', managers_employees_path %></span> 
-      </li>
-      <li class="nav-item">
-       <span class="nav-link"><%= link_to 'Admins', admins_employees_path %></span> 
+        <a class="nav-link" href="active/employees">Employees</a>
       </li>
 
+      <li class="nav-item">
+        <a class="nav-link" href="/flavors">Flavors</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/jobs">Jobs</a>
+      </li>
     </ul>
 
     

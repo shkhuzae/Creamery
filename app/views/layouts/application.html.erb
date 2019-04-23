@@ -22,33 +22,18 @@
 
 		    
     <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #B0EEEE;">
-  <a class="navbar-brand" href="/">A & M Creamery </a>
+  <a class="navbar-brand" href="/pages/home">A & M Creamery </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
 
-      <li class="nav-item">
-        <a class="nav-link" href="/stores">Stores</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/employees">Employees</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/assignments">Assignments</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/jobs">Jobs</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/flavors">Flavors</a>
-      </li>
-      
-    </ul>
     <span class="nav-item">
-      <a class="nav-link" href="/login">Login</a>
+      <% if logged_in? %>
+      <%= link_to "logout", logout_path %>
+   <% end %>
+      
     </span>
     
   </div>
@@ -57,14 +42,11 @@
 </div>
 
  <div class="p-3 mb-2 text-black" style="background-color: #FCFAFC;"> 
- <h5> Life your spirit, order an icecream! </h5>
- <% if logged_in? %>
-      <%= link_to "logout", logout_path %>
-    <% else %>
-      <%= link_to "login", login_path %>
- <% end %>
+
+
  
  <%= yield %>
+ <br/>
  </div>
  
   </body>

@@ -4,12 +4,20 @@ class EmployeesController < ApplicationController
   # GET /employees
   # GET /employees.json
   def index
+    if current_user.role?(:manager)
+      @active_employees = Employee.for_store(current_user.employee.current_assignment.store_id).active.alphabetical.paginate(page: params[:page]).per_page(10)
+      @inactive_employees = Employee.for_store(current_user.employee.current_assignment.store_id).inactive.alphabetical.paginate(page: params[:page]).per_page(10)
+    else
+      @active_employees = Employee.active.alphabetical.paginate(page: params[:page]).per_page(10)
+      @inactive_employees = Employee.inactive.alphabetical.paginate(page: params[:page]).per_page(10)
+    end
     @employees = Employee.all
   end
 
   # GET /employees/1
   # GET /employees/1.json
   def show
+    @assignments = @employee.assignments.chronological.paginate(page: params[:page]).per_page(5)
   end
 
   #view employees below 18 years old
@@ -24,7 +32,7 @@ class EmployeesController < ApplicationController
   
   #view only active employees
   def active
-      @employees = Employee.active.alphabetical.paginate(page: params[:page]).per_page(10)
+      @employees = Employee.for_store(current_user.employee.current_assignment.store_id).active.alphabetical.paginate(page: params[:page]).per_page(10)
   end
 
   #view inactive employees
@@ -50,6 +58,8 @@ class EmployeesController < ApplicationController
   # GET /employees/new
   def new
     @employee = Employee.new
+    @user = @employee.build_user
+    
   end
 
   # GET /employees/1/edit

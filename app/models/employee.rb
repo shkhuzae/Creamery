@@ -1,5 +1,5 @@
 class Employee < ApplicationRecord
-     # Callbacks
+  # Callbacks
   before_save :reformat_phone
   before_validation :reformat_ssn
   
@@ -26,6 +26,7 @@ class Employee < ApplicationRecord
   scope :managers,        -> { where(role: 'manager') }
   scope :admins,          -> { where(role: 'admin') }
   scope :alphabetical,    -> { order('last_name, first_name') }
+  scope :for_store,       ->(store_id) { joins(:assignments).where(assignments: {store_id: store_id, end_date: nil})}
   
   # Other methods
   def name

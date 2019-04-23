@@ -10,14 +10,15 @@ Rails.application.routes.draw do
   resources :stores
   resources :demos, only: [:new, :create, :destroy]
   
-  get 'demos/new', to: 'demos#new', as: :login
+  get 'demos/home', to: 'demos#home', as: :login
   get 'demos/destroy', to: 'demos#destroy', as: :logout
 
 
-  #root 'demos#new'
+  #root 'demos#home'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   
-  root to: 'pages#home', as: :home
+  #get 'pages/home', to: 'pages#home', as: :home
+  root to: 'demos#new', as: :home
   
   get 'active' => 'stores#active', as: :active_stores
   get 'inactive' => 'stores#inactive', as: :inactive_stores

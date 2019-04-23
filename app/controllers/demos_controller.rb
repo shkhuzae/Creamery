@@ -4,15 +4,20 @@ class DemosController < ApplicationController
     
     end
     
-    def new
-    
-    end
     
     def create
         user = User.find_by(email: params[:demo][:email].downcase) 
        if user && user.authenticate(params[:demo][:password])
            login(user)
-           redirect_to user
+        if logged_in? and current_user.role?(:employee)
+            redirect_to regulars_employees_path
+        elsif logged_in? and current_user.role?(:admin)
+            redirect_to admins_employees_path
+        elsif logged_in? and current_user.role?(:manager)
+            redirect_to managers_employees_path
+        else
+            redirect_to home_path
+        end
        else
            flash.now[:danger] = "Invalid email or password"
            render 'new'
@@ -21,6 +26,6 @@ class DemosController < ApplicationController
     
     def destroy
         logout
-        redirect_to root_url
+        redirect_to logout_path
     end
 end

@@ -34,6 +34,15 @@
   <strong>Active:</strong>
   <%= @employee.active %>
 </p>
+<p>
+  <strong>Assignments:</strong>
+  <%= link_to 'Assignments', assignment_path(assignment) unless @employee.current_assignment.nil? %>
+
+</p>
+<p>
+  <strong>Currently Assigned:</strong>
+  <%= link_to @employee.current_assignment.store.name, store_path(@employee.current_assignment.store) unless @employee.current_assignment.nil? %>
+</p>
 
 <%= link_to 'Edit', edit_employee_path(@employee) %> |
 <%= link_to 'Back', employees_path, :class => 'btn btn-secondary' %>

@@ -1,42 +1,60 @@
-<%= form_with(model: shift, local: true) do |form| %>
-  <% if shift.errors.any? %>
+<%= form_for(@shift) do |f| %>
+  <% if @shift.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(shift.errors.count, "error") %> prohibited this shift from being saved:</h2>
+      <h2><%= pluralize(@shift.errors.count, "error") %> prohibited this employee from being saved:</h2>
 
       <ul>
-      <% shift.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+      <% @shift.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
       <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :assignment_id %>
-    <%= form.number_field :assignment_id %>
-  </div>
+<!--form attributes-->
+<div class="form-row">
+  
+      <div class="form-group col-md-4">
+      <label for="assignment_id"><%= f.label :assignment_id %></label>
+      <%= f.text_field :assignment_id, :class => "form-control" %>
+      </div>
+      
+      <div class="form-group col-md-4">
+      <label for="date"><%= f.label :date %></label>
+      <%= f.text_field :date, :class => "form-control" %>
+      </div>
 
-  <div class="field">
-    <%= form.label :date %>
-    <%= form.date_select :date %>
-  </div>
+</div>
 
-  <div class="field">
-    <%= form.label :start_time %>
-    <%= form.time_select :start_time %>
+<div class="form-row">
+  
+  <div class="form-group col-md-2">
+    <label for="start_time"><%= f.label :start_time %></label>
+    <%= f.text_field :start_time, :class => "form-control" %>
   </div>
+  
+  <div class="form-group col-md-4">
+      <label for="end_time"><%= f.label :end_time %></label>
+      <%= f.text_field :end_time, :class => "form-control" %>
+  </div>
+    
+</div>
 
-  <div class="field">
-    <%= form.label :end_time %>
-    <%= form.time_select :end_time %>
-  </div>
 
-  <div class="field">
-    <%= form.label :notes %>
-    <%= form.text_area :notes %>
+<div class="form-row">
+  
+  <div class="form-group col-md-4">
+      <label for="notes"><%= f.label :notes %></label>
+      <%= f.text_field :notes, :class => "form-control" %>
   </div>
+  
+</div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+
+<%= f.submit "Submit", :class => 'btn btn-primary' %>
+<br/>
+
+<br/>
 <% end %>
+
+

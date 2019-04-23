@@ -1,6 +1,11 @@
 <html>
     <head>
-        
+    <% if logged_in? %>
+      <%= link_to "logout", logout_path %>
+      
+     <% else %>
+     <%= link_to "login", login_path %>
+   <% end %>
     </head>
     <!--image in home page-->
     <%= image_tag("r.jpeg", alt: "Ice cream", :class => "img-fluid") %>
