@@ -1,29 +1,31 @@
-<p id="notice"><%= notice %></p>
 
-<h1>Store Flavors</h1>
-
-<table>
+<%= link_to 'New Store Flavor', new_store_flavor_path %>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>Store</th>
-      <th>Flavor</th>
-      <th colspan="3"></th>
+
+      <th scope="col">StoreFlavor</th>
+      <th scope="col">Edit</th>
+      <th scope="col">Delete</th>
+ 
     </tr>
   </thead>
-
   <tbody>
-    <% @store_flavors.each do |store_flavor| %>
-      <tr>
-        <td><%= store_flavor.store_id %></td>
-        <td><%= store_flavor.flavor_id %></td>
-        <td><%= link_to 'Show', store_flavor %></td>
-        <td><%= link_to 'Edit', edit_store_flavor_path(store_flavor) %></td>
-        <td><%= link_to 'Destroy', store_flavor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
+    
+      
+      <% @store_flavors.each do |store_flavor| %>
+        <tr>
+          <td><%= link_to store_flavor.id, store_flavor_path(store_flavor) %></td>
+          <td><%= link_to 'Edit', edit_store_flavor_path(store_flavor), :class=> "btn btn-warning" %></td>
+          <td><%= link_to 'Destroy', store_flavor, confirm: 'Are you sure?', method: :delete, :class=> "btn btn-danger" %></td>
+        </tr>
+      <% end %>
+    
+    
   </tbody>
 </table>
 
-<br>
 
-<%= link_to 'New Store Flavor', new_store_flavor_path %>
+<br />
+
+<br />

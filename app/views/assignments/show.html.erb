@@ -1,29 +1,39 @@
-<p id="notice"><%= notice %></p>
+ <table class="table table-striped">
+  <thead>
+    <tr>
 
-<p>
-  <strong>Store:</strong>
-  <%= @assignment.store_id %>
-</p>
+      <th scope="col">Store</th>
+      <th scope="col">Shifts</th>
+      <th scope="col">Employee</th>
+     <th scope="col">Start Date</th>
+     <th scope="col">End Date</th>
+     <th scope="col">Pay Level</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+      
+      
+        <tr>
+          <td><%= @assignment.store_id %> </td>
+          <td><%= link_to 'View All', shifts_path(Shift.find_by(assignment_id: @assignment.id)) %></td>
+          <td><%= @assignment.employee_id %></td>
+          <td><%= @assignment.start_date %></td>
+          <td><%= @assignment.end_date %></td>
+          <td><%= @assignment.pay_level %></td>
+        </tr>
+      
+    
+    
+  </tbody>
+</table>
 
-<p>
-  <strong>Employee:</strong>
-  <%= @assignment.employee_id %>
-</p>
 
-<p>
-  <strong>Start date:</strong>
-  <%= @assignment.start_date %>
-</p>
+<br />
 
-<p>
-  <strong>End date:</strong>
-  <%= @assignment.end_date %>
-</p>
 
-<p>
-  <strong>Pay level:</strong>
-  <%= @assignment.pay_level %>
-</p>
+<br />
+
 
 <%= link_to 'Edit', edit_assignment_path(@assignment) %> |
 <%= link_to 'Back', assignments_path, :class => 'btn btn-secondary' %>

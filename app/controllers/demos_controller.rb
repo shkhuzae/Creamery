@@ -6,6 +6,8 @@ class DemosController < ApplicationController
     
     
     def create
+        puts params[:demo][:email]
+        puts params[:demo][:password]
         user = User.find_by(email: params[:demo][:email].downcase) 
        if user && user.authenticate(params[:demo][:password])
            login(user)
@@ -20,12 +22,12 @@ class DemosController < ApplicationController
         end
        else
            flash.now[:danger] = "Invalid email or password"
-           render 'new'
+           render 'home'
        end
     end
     
     def destroy
         logout
-        redirect_to logout_path
+        redirect_to login_path
     end
 end

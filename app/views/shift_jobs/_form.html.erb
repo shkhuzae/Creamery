@@ -1,4 +1,4 @@
-<%= form_with(model: shift_job, local: true) do |form| %>
+<%= form_with(model: shift_job, local: true) do |f| %>
   <% if shift_job.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(shift_job.errors.count, "error") %> prohibited this shift_job from being saved:</h2>
@@ -11,17 +11,32 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :shift_id %>
-    <%= form.number_field :shift_id %>
-  </div>
+ <!--form attributes-->
+<div class="form-row">
+  
+      <div class="form-group col-md-4">
+      <label for="shift_id"><%= f.label :shift_id %></label>
+      <%= f.text_field :shift_id, :class => "form-control" %>
+      </div>
+      
 
-  <div class="field">
-    <%= form.label :job_id %>
-    <%= form.number_field :job_id %>
-  </div>
+</div>
 
-  <div class="actions">
-    <%= form.submit %>
+<div class="form-row">
+  
+  <div class="form-group col-md-2">
+    <label for="job_id"><%= f.label :job_id %></label>
+    <%= f.text_field :job_id, :class => "form-control" %>
   </div>
+  
+  
+</div>
+
+
+<%= f.submit "Submit", :class => 'btn btn-primary' %>
+<br/>
+
+<br/>
 <% end %>
+
+

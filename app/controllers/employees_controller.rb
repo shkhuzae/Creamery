@@ -4,7 +4,7 @@ class EmployeesController < ApplicationController
   # GET /employees
   # GET /employees.json
   def index
-    if current_user.role?(:manager)
+    if current_user.role? :manager
       @active_employees = Employee.for_store(current_user.employee.current_assignment.store_id).active.alphabetical.paginate(page: params[:page]).per_page(10)
       @inactive_employees = Employee.for_store(current_user.employee.current_assignment.store_id).inactive.alphabetical.paginate(page: params[:page]).per_page(10)
     else
@@ -12,6 +12,7 @@ class EmployeesController < ApplicationController
       @inactive_employees = Employee.inactive.alphabetical.paginate(page: params[:page]).per_page(10)
     end
     @employees = Employee.all
+    authorize! :index, @employees
   end
 
   # GET /employees/1
@@ -33,8 +34,10 @@ class EmployeesController < ApplicationController
   #view only active employees
   def active
       @employees = Employee.for_store(current_user.employee.current_assignment.store_id).active.alphabetical.paginate(page: params[:page]).per_page(10)
+      authorize! :active, @employees
   end
 
+  
   #view inactive employees
   def inactive
       @employees = Employee.inactive.alphabetical.paginate(page: params[:page]).per_page(10)

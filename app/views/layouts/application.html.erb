@@ -29,12 +29,57 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
+    <ul class="navbar-nav mr-auto">
+
+      <li class="nav-item">
+        <% if can? :index, Store %>
+        <a class="nav-link" href="/stores">Stores</a>
+        <% end %>
+      </li>
+      <li class="nav-item">
+        <% if can? :index, StoreFlavor %>
+        <a class="nav-link" href="/store_flavors">StoreFlavors</a>
+        <% end %>
+      </li>
+       <li class="nav-item">
+         <% if can? :index, Job %>
+        <a class="nav-link" href="/jobs">Jobs</a>
+        <% end %>
+      </li>
+    <li class="nav-item">
+         <% if can? :index, ShiftJob %>
+        <a class="nav-link" href="/shift_jobs">ShiftJobs</a>
+        <% end %>
+      </li>
+    <li class="nav-item">
+         <% if can? :index, Assignment %>
+        <a class="nav-link" href="/assignments">Assignments</a>
+        <% end %>
+      </li>
+      <li class="nav-item">
+          <% if can? :index, Flavor %>
+        <a class="nav-link" href="/flavors">Flavors</a>
+          <% end %>
+      </li>
+      <li class="nav-item">
+          <% if can? :active, Employee %>
+        <a class="nav-link" href="active/employees">Employees</a>
+          <% end %>
+      </li>
+      <li class="nav-item">
+          <% if can? :index, Shift %>
+        <a class="nav-link" href="/shifts">Shifts</a>
+        <% end %>
+      </li>
+    </ul>
+    
     <span class="nav-item">
       <% if logged_in? %>
       <%= link_to "logout", logout_path %>
    <% end %>
       
     </span>
+    
     
   </div>
   
@@ -44,7 +89,9 @@
  <div class="p-3 mb-2 text-black" style="background-color: #FCFAFC;"> 
 
 
- 
+  <br/>
+   <br/>
+    <br/>
  <%= yield %>
  <br/>
  </div>

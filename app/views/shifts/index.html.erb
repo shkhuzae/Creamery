@@ -23,9 +23,10 @@
 </nav>
 </div>
 
-
 <!--link to new employee-->
+<% if can? :create, Shift %>
 <%= link_to 'New Shift', new_shift_path %>
+<% end %>
 <table class="table table-striped">
   <thead>
     <tr>
@@ -41,7 +42,7 @@
       
       <% @shifts.each do |shift| %>
         <tr>
-          <td><%= link_to shift.name, shift_path(shift) %></td>
+          <td><%= link_to shift.id, shift_path(shift) %></td>
           <td><%= link_to 'Edit', edit_shift_path(shift), :class=> "btn btn-warning" %></td>
           <td><%= link_to 'Destroy', shift, confirm: 'Are you sure?', method: :delete, :class=> "btn btn-danger" %></td>
         </tr>

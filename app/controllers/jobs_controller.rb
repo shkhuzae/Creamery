@@ -5,6 +5,7 @@ class JobsController < ApplicationController
   # GET /jobs.json
   def index
     @jobs = Job.all
+    authorize! :index, @jobs
   end
 
   # GET /jobs/1

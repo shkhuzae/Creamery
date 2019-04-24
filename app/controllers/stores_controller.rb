@@ -5,6 +5,7 @@ class StoresController < ApplicationController
   # GET /stores.json
   def index
     @stores = Store.all
+    authorize! :index, @stores
   end
 
   # GET /stores/1
@@ -25,6 +26,7 @@ class StoresController < ApplicationController
   # GET /stores/new
   def new
     @store = Store.new
+    authorize! :new, @store
   end
 
   # GET /stores/1/edit

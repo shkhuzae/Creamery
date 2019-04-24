@@ -5,6 +5,7 @@ class ShiftsController < ApplicationController
   # GET /shifts.json
   def index
     @shifts = Shift.all
+    authorize! :index, @shifts
   end
 
   # GET /shifts/1
@@ -35,6 +36,7 @@ class ShiftsController < ApplicationController
         format.json { render json: @shift.errors, status: :unprocessable_entity }
       end
     end
+    authorize! :create, @shift
   end
 
   # PATCH/PUT /shifts/1

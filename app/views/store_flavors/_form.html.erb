@@ -1,4 +1,4 @@
-<%= form_with(model: store_flavor, local: true) do |form| %>
+<%= form_with(model: store_flavor, local: true) do |f| %>
   <% if store_flavor.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(store_flavor.errors.count, "error") %> prohibited this store_flavor from being saved:</h2>
@@ -11,17 +11,31 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :store_id %>
-    <%= form.number_field :store_id %>
-  </div>
+ <!--form attributes-->
+<div class="form-row">
+  
+      <div class="form-group col-md-4">
+      <label for="store_id"><%= f.label :store_id %></label>
+      <%= f.text_field :store_id, :class => "form-control" %>
+      </div>
+      
 
-  <div class="field">
-    <%= form.label :flavor_id %>
-    <%= form.number_field :flavor_id %>
-  </div>
+</div>
 
-  <div class="actions">
-    <%= form.submit %>
+<div class="form-row">
+  
+  <div class="form-group col-md-2">
+    <label for="flavor_id"><%= f.label :flavor_id %></label>
+    <%= f.text_field :flavor_id, :class => "form-control" %>
   </div>
+  
+  
+</div>
+
+
+<%= f.submit "Submit", :class => 'btn btn-primary' %>
+<br/>
+
+<br/>
 <% end %>
+

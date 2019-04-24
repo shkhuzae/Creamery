@@ -36,7 +36,7 @@
 </p>
 <p>
   <strong>Assignments:</strong>
-  <%= link_to 'Assignments', assignment_path(assignment) unless @employee.current_assignment.nil? %>
+  <%= link_to 'View All', assignment_path(@employee.current_assignment) unless @employee.current_assignment.nil? %>
 
 </p>
 <p>

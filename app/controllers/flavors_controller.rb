@@ -5,6 +5,7 @@ class FlavorsController < ApplicationController
   # GET /flavors.json
   def index
     @flavors = Flavor.all
+    authorize! :index, @flavors
   end
 
   # GET /flavors/1

@@ -3,6 +3,7 @@ class UsersController < ApplicationController
 
   before_action :logged_in_user
   before_action :correct_user, only: [:show, :edit, :update, :destroy]
+
   
   # GET /users
   # GET /users.json
@@ -85,4 +86,5 @@ class UsersController < ApplicationController
     def correct_user
       redirect_to(root_url) unless @user == current_user
     end
+
 end

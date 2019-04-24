@@ -38,6 +38,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'validates_timeliness'
 gem 'will_paginate'
 gem 'simple_form'
+gem 'cancancan'
 
 gem 'bootstrap'
 gem 'jquery-rails'
