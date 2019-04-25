@@ -1,16 +1,19 @@
 class StoresController < ApplicationController
   before_action :set_store, only: [:show, :edit, :update, :destroy]
-
+  authorize_resource
+  
   # GET /stores
   # GET /stores.json
   def index
     @stores = Store.all
-    authorize! :index, @stores
+    @active_stores = Store.active
+
   end
 
   # GET /stores/1
   # GET /stores/1.json
   def show
+
   end
 
   #view active stores only
@@ -26,7 +29,7 @@ class StoresController < ApplicationController
   # GET /stores/new
   def new
     @store = Store.new
-    authorize! :new, @store
+
   end
 
   # GET /stores/1/edit
@@ -47,6 +50,7 @@ class StoresController < ApplicationController
         format.json { render json: @store.errors, status: :unprocessable_entity }
       end
     end
+
   end
 
   # PATCH/PUT /stores/1
@@ -61,6 +65,7 @@ class StoresController < ApplicationController
         format.json { render json: @store.errors, status: :unprocessable_entity }
       end
     end
+
   end
 
   # DELETE /stores/1
@@ -71,6 +76,7 @@ class StoresController < ApplicationController
       format.html { redirect_to stores_url, notice: 'Store was successfully destroyed.' }
       format.json { head :no_content }
     end
+
   end
 
   private

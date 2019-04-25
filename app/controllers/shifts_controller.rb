@@ -1,11 +1,12 @@
 class ShiftsController < ApplicationController
   before_action :set_shift, only: [:show, :edit, :update, :destroy]
-
+  authorize_resource
+  
   # GET /shifts
   # GET /shifts.json
   def index
     @shifts = Shift.all
-    authorize! :index, @shifts
+    @shiftsmanager = Shift.by_employee(Employee.for_store(current_user.employee.current_assignment.store_id).active.alphabetical.paginate(page: params[:page]).per_page(10))
   end
 
   # GET /shifts/1
@@ -36,7 +37,7 @@ class ShiftsController < ApplicationController
         format.json { render json: @shift.errors, status: :unprocessable_entity }
       end
     end
-    authorize! :create, @shift
+
   end
 
   # PATCH/PUT /shifts/1

@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html>
   <head>
+      <script>
+        function goBack() {
+          window.history.back();
+        }
+      </script>
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 
     <title>A&M Creamery</title>
@@ -18,72 +24,7 @@
     <div class="alert alert-<%= message_type %>"><%= message %></div>
     <% end %>
     
-    <div class="container-fluid" >
-
-		    
-    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #B0EEEE;">
-  <a class="navbar-brand" href="/pages/home">A & M Creamery </a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
-    <ul class="navbar-nav mr-auto">
-
-      <li class="nav-item">
-        <% if can? :index, Store %>
-        <a class="nav-link" href="/stores">Stores</a>
-        <% end %>
-      </li>
-      <li class="nav-item">
-        <% if can? :index, StoreFlavor %>
-        <a class="nav-link" href="/store_flavors">StoreFlavors</a>
-        <% end %>
-      </li>
-       <li class="nav-item">
-         <% if can? :index, Job %>
-        <a class="nav-link" href="/jobs">Jobs</a>
-        <% end %>
-      </li>
-    <li class="nav-item">
-         <% if can? :index, ShiftJob %>
-        <a class="nav-link" href="/shift_jobs">ShiftJobs</a>
-        <% end %>
-      </li>
-    <li class="nav-item">
-         <% if can? :index, Assignment %>
-        <a class="nav-link" href="/assignments">Assignments</a>
-        <% end %>
-      </li>
-      <li class="nav-item">
-          <% if can? :index, Flavor %>
-        <a class="nav-link" href="/flavors">Flavors</a>
-          <% end %>
-      </li>
-      <li class="nav-item">
-          <% if can? :active, Employee %>
-        <a class="nav-link" href="active/employees">Employees</a>
-          <% end %>
-      </li>
-      <li class="nav-item">
-          <% if can? :index, Shift %>
-        <a class="nav-link" href="/shifts">Shifts</a>
-        <% end %>
-      </li>
-    </ul>
     
-    <span class="nav-item">
-      <% if logged_in? %>
-      <%= link_to "logout", logout_path %>
-   <% end %>
-      
-    </span>
-    
-    
-  </div>
-  
-</nav>
 </div>
 
  <div class="p-3 mb-2 text-black" style="background-color: #FCFAFC;"> 

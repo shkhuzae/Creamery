@@ -36,21 +36,6 @@ class JobTest < ActiveSupport::TestCase
       assert_equal 1, Job.inactive.size
     end
     
-    should "make an undestroyable job inactive" do
-      create_employees
-      create_stores
-      create_assignments
-      create_shifts
-      create_shift_jobs
-      deny @cashier.destroy
-      @cashier.reload
-      deny @cashier.active
-      remove_shift_jobs
-      remove_employees
-      remove_stores
-      remove_assignments
-      remove_shifts
-    end
     
   end
 end

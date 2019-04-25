@@ -1,6 +1,7 @@
 class ShiftJobsController < ApplicationController
   before_action :set_shift_job, only: [:show, :edit, :update, :destroy]
-
+  authorize_resource
+  
   # GET /shift_jobs
   # GET /shift_jobs.json
   def index

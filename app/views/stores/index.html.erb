@@ -1,9 +1,9 @@
+<h4> Stores </h4>
 
 
-<!--creating a new store-->
-<% if can? :new, Store %>
 <%= link_to 'New Store', new_store_path %>
-<% end %>
+<%= link_to 'Active', active_stores_path %>
+<%= link_to 'Inactive', inactive_stores_path %>
 
 <table class="table table-striped">
   <thead>
@@ -20,9 +20,15 @@
       
       <% @stores.each do |store| %>
         <tr>
+          <% if can? :show, Store %>
           <td><%= link_to store.name, store_path(store) %></td>
+          <% end %>
+          <% if can? :edit, Store %>
           <td><%= link_to 'Edit', edit_store_path(store), :class=> "btn btn-warning" %></td>
+          <% end %>
+          <% if can? :destroy, Store %>
           <td><%= link_to 'Destroy', store, method: :delete, confirm: 'Are you sure?', :class=> "btn btn-danger" %></td>
+          <% end %>
         </tr>
       <% end %>
     
@@ -30,7 +36,7 @@
   </tbody>
 </table>
 
-
+<div class="p-3 mb-2 bg-light text-dark"><button class="btn btn-light" onclick="goBack()">Back</button></div>
 <br />
 
 <br />

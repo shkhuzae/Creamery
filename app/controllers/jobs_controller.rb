@@ -1,11 +1,12 @@
 class JobsController < ApplicationController
   before_action :set_job, only: [:show, :edit, :update, :destroy]
-
+  authorize_resource
+  
   # GET /jobs
   # GET /jobs.json
   def index
     @jobs = Job.all
-    authorize! :index, @jobs
+    
   end
 
   # GET /jobs/1

@@ -1,6 +1,7 @@
 class AssignmentsController < ApplicationController
   before_action :set_assignment, only: [:show, :edit, :update, :destroy]
-
+  authorize_resource
+  
   # GET /assignments
   # GET /assignments.json
   def index

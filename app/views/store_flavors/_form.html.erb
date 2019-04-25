@@ -1,10 +1,10 @@
-<%= form_with(model: store_flavor, local: true) do |f| %>
-  <% if store_flavor.errors.any? %>
+<%= simple_form_for(@store_flavor) do |f| %>
+  <% if @store_flavor.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(store_flavor.errors.count, "error") %> prohibited this store_flavor from being saved:</h2>
+      <h2><%= pluralize(@store_flavor.errors.count, "error") %> prohibited this store_flavor from being saved:</h2>
 
       <ul>
-      <% store_flavor.errors.full_messages.each do |message| %>
+      <% @store_flavor.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
@@ -15,8 +15,8 @@
 <div class="form-row">
   
       <div class="form-group col-md-4">
-      <label for="store_id"><%= f.label :store_id %></label>
-      <%= f.text_field :store_id, :class => "form-control" %>
+
+      <%= f.input :store_id, :class => "form-control", collection: Store.active.all %>
       </div>
       
 

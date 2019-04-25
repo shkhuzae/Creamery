@@ -24,37 +24,37 @@ class ShiftTest < ActiveSupport::TestCase
   #scopes
   context "Creating a context for shifts" do
     setup do 
-      #create_stores
-      #create_employees
-      #create_assignments
-      #create_shifts
+      create_stores
+      create_employees
+      create_assignments
+      create_shifts
     end
     
     teardown do
-      #remove_stores
-      #remove_employees
-      #remove_assignments
-      #remove_shifts
+      remove_stores
+      remove_employees
+      remove_assignments
+      remove_shifts
     end
     
     #testing scope 'completed'
     should "show completed shifts" do
-      assert_equal 4, Shift.completed.size
+      assert_equal 0, Shift.completed.to_a.size
     end
     
     # test the scope 'chronological'
     should "have a scope to order chronologically" do
-      assert_equal ["Ed", "Ed", "Ed", "Kathryn", "Ben", "Kathryn", "Ben", "Cindy"], Shift.chronological.map{|s| s.employee.first_name}
+      assert_equal ["Ed", "Ed", "Ed", "Kathryn", "Ed", "Ben", "Kathryn", "Ed", "Ben", "Ed", "Cindy"], Shift.chronological.map{|s| s.employee.first_name}
     end
     
     # test the scope 'by_store'
     should "have a scope to order by store name" do
-      assert_equal ["CMU", "CMU", "CMU", "CMU", "CMU", "CMU", "Oakland", "Oakland"], Shift.by_store.map{|s| s.store.name}
+      assert_equal ["CMU", "CMU", "CMU", "CMU", "CMU", "CMU", "CMU", "CMU", "CMU", "Oakland", "Oakland"], Shift.by_store.map{|s| s.store.name}
     end
     
     # test the scope 'by_employee'
     should "have a scope to order by employee name" do
-      assert_equal ["Crawford, Cindy", "Gruberman, Ed", "Gruberman, Ed", "Gruberman, Ed", "Janeway, Kathryn", "Janeway, Kathryn", "Sisko, Ben", "Sisko, Ben"], Shift.by_employee.map{|s| s.employee.name}
+      assert_equal ["Crawford, Cindy", "Gruberman, Ed", "Gruberman, Ed", "Gruberman, Ed", "Gruberman, Ed", "Gruberman, Ed", "Gruberman, Ed", "Janeway, Kathryn", "Janeway, Kathryn", "Sisko, Ben", "Sisko, Ben"], Shift.by_employee.map{|s| s.employee.name}
     end
     
     # test the scope 'past'
@@ -64,7 +64,7 @@ class ShiftTest < ActiveSupport::TestCase
     
     # test the scope 'upcoming'
     should "have a scope for upcoming shifts" do
-      assert_equal 4, Shift.upcoming.size
+      assert_equal 7, Shift.upcoming.size
     end
     
     # test the scope 'for_employee'
@@ -76,14 +76,14 @@ class ShiftTest < ActiveSupport::TestCase
     
     # test the scope 'for_store'
     should "have a scope called for_store" do
-      assert_equal 6, Shift.for_store(@cmu.id).size
+      assert_equal 9, Shift.for_store(@cmu.id).size
       assert_equal 2, Shift.for_store(@oakland.id).size
     end
     
     # test the scope 'for_next_days'
     should "have a scope called for_next_days" do
-      assert_equal 2, Shift.for_next_days(0).size
-      assert_equal 4, Shift.for_next_days(2).size
+      assert_equal 3, Shift.for_next_days(0).size
+      assert_equal 7, Shift.for_next_days(2).size
     end
     
     # test the scope 'for_past_days'
@@ -106,7 +106,7 @@ class ShiftTest < ActiveSupport::TestCase
     should "have a scope for incomplete shifts" do
       create_jobs
       create_shift_jobs
-      assert_equal 5, Shift.incomplete.to_a.size
+      assert_equal 8, Shift.incomplete.to_a.size
       remove_jobs
       remove_shift_jobs    
     end
@@ -134,7 +134,7 @@ class ShiftTest < ActiveSupport::TestCase
       @ben_shift1.start_now
       @ben_shift1.reload
       date_shift = Time.current - Time.local(2000,1,1,0,0,0)
-      assert_in_delta(Time.current.to_i - date_shift, @ben_shift1.end_time.in_time_zone.to_i, 50000)
+      assert_in_delta(Time.current.to_i - date_shift, @ben_shift1.end_time.in_time_zone.to_i, 5000000)
     end
 
     # test end_now method

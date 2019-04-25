@@ -11,10 +11,14 @@ Rails.application.routes.draw do
   resources :demos, only: [:new, :create, :destroy]
   
 
-  get 'demos/home', to: 'demos#new', as: :login
+  get 'demos/home', to: 'demos#create', as: :login
+  get 'demos/employeedash', to: 'demos#employeedash', as: :employeedash
+  get 'demos/managerdash', to: 'demos#managerdash', as: :managerdash
+  get 'demos/admindash', to: 'demos#admindash', as: :admindash
+  
   get 'demos/destroy', to: 'demos#destroy', as: :logout
 
-
+  
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   

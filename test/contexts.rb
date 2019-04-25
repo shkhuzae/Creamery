@@ -6,6 +6,8 @@ require './test/sets/assignment_contexts'
 require './test/sets/shift_contexts'
 require './test/sets/job_contexts'
 require './test/sets/flavor_contexts'
+require './test/sets/shift_job_contexts'
+require './test/sets/user_contexts'
 
 module Contexts
   # explicitly include all sets of contexts used for testing 
@@ -15,6 +17,8 @@ module Contexts
   include Contexts::ShiftContexts
   include Contexts::JobContexts
   include Contexts::FlavorContexts
+  include Contexts::ShiftJobContexts
+  include Contexts::UserContexts
   
  def create_contexts
     create_employees
@@ -23,6 +27,9 @@ module Contexts
     create_shifts
     create_jobs
     create_flavors
+    create_shift_jobs
+    create_users
+    
  end
   
   def destroy_contexts
@@ -32,6 +39,9 @@ module Contexts
     destroy_shifts
     destroy_jobs
     destroy_flavors
+    destroy_shift_jobs
+    destroy_users
+    
   end
   
 

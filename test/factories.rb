@@ -47,4 +47,15 @@ FactoryBot.define do
     active {true}
   end
 
+  factory :shift_job do
+    association :shift
+    association :job
+  end
+  
+  factory :user do
+    association :employee
+    email {"shouq@outlook.com"}
+    password {"12345"}
+  end
+  
 end

@@ -1,6 +1,7 @@
 class StoreFlavorsController < ApplicationController
   before_action :set_store_flavor, only: [:show, :edit, :update, :destroy]
-
+  authorize_resource
+  
   # GET /store_flavors
   # GET /store_flavors.json
   def index

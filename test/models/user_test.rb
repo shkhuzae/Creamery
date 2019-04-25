@@ -1,7 +1,48 @@
 require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+
+  should belong_to(:employee)
+
+  # Validating email...
+  should allow_value("fred@fred.com").for(:email)
+  should allow_value("fred@andrew.cmu.edu").for(:email)
+  should allow_value("my_fred@fred.org").for(:email)
+  should allow_value("fred123@fred.gov").for(:email)
+  should allow_value("my.fred@fred.net").for(:email)
+  
+  should_not allow_value("fred").for(:email)
+  should_not allow_value("fred@fred,com").for(:email)
+  should_not allow_value("fred@fred.uk").for(:email)
+  should_not allow_value("my fred@fred.com").for(:email)
+  should_not allow_value("fred@fred.con").for(:email)
+
+  should validate_uniqueness_of(:email).case_insensitive
+
+  context "Creating a context for users" do
+    setup do 
+      create_employees
+      create_users
+    end
+    
+    teardown do
+      remove_employees
+      remove_users
+    end
+
+
+    # not necessary, but prove the user is destroyed if employee destroyed;
+    # was really handled by dependent: :destroy in employee model and its test
+    should "destroy user if employee destroyed" do
+      freeman = FactoryBot.create(:employee, first_name: "Melanie", last_name: "Freeman", date_of_birth: 229.months.ago.to_date, role: "manager", phone: nil, ssn: "084359855")
+      freeman_user = FactoryBot.create(:user, employee: freeman, email: "mdf@example.com")
+      freeman_user.reload
+      assert_equal "mdf@example.com", freeman_user.email
+      assert freeman.destroy
+      assert freeman_user.destroyed?
+    end
+
+
+    
+  end
 end

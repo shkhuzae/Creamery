@@ -1,4 +1,4 @@
-<%= form_for(@shift) do |f| %>
+<%= simple_form_for(@shift) do |f| %>
   <% if @shift.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@shift.errors.count, "error") %> prohibited this employee from being saved:</h2>
@@ -15,13 +15,12 @@
 <div class="form-row">
   
       <div class="form-group col-md-4">
-      <label for="assignment_id"><%= f.label :assignment_id %></label>
-      <%= f.text_field :assignment_id, :class => "form-control" %>
+      
+      <%= f.input :assignment_id, :class => "form-control", collection: Assignment.current.ids %>
       </div>
       
       <div class="form-group col-md-4">
-      <label for="date"><%= f.label :date %></label>
-      <%= f.text_field :date, :class => "form-control" %>
+      <%= f.date_field :date, :label => "Start Date", as: :string, :class => "form-control" %>
       </div>
 
 </div>

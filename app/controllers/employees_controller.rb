@@ -1,6 +1,7 @@
 class EmployeesController < ApplicationController
   before_action :set_employee, only: [:show, :edit, :update, :destroy]
-
+  authorize_resource
+  
   # GET /employees
   # GET /employees.json
   def index
@@ -11,8 +12,8 @@ class EmployeesController < ApplicationController
       @active_employees = Employee.active.alphabetical.paginate(page: params[:page]).per_page(10)
       @inactive_employees = Employee.inactive.alphabetical.paginate(page: params[:page]).per_page(10)
     end
-    @employees = Employee.all
-    authorize! :index, @employees
+      @employees = Employee.all
+
   end
 
   # GET /employees/1
@@ -31,10 +32,9 @@ class EmployeesController < ApplicationController
       @employees = Employee.is_18_or_older.alphabetical.paginate(page: params[:page]).per_page(10)
   end
   
-  #view only active employees
+  #view only active employees for a manager
   def active
       @employees = Employee.for_store(current_user.employee.current_assignment.store_id).active.alphabetical.paginate(page: params[:page]).per_page(10)
-      authorize! :active, @employees
   end
 
   
@@ -55,6 +55,15 @@ class EmployeesController < ApplicationController
 
   #view admins only
   def admins
+    # puts current_user.id 
+    # @admin = Employee.find_by(session[:current_user].id)
+    # puts "role"
+    
+    # puts @admin.role 
+    # puts session[:current_user]
+    
+    # #puts  current_user.role?
+    #   @admin = current_user.role
       @employees = Employee.admins.alphabetical.paginate(page: params[:page]).per_page(10)
   end
   
@@ -83,6 +92,7 @@ class EmployeesController < ApplicationController
         format.json { render json: @employee.errors, status: :unprocessable_entity }
       end
     end
+      
   end
 
   # PATCH/PUT /employees/1

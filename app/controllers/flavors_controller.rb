@@ -1,11 +1,11 @@
 class FlavorsController < ApplicationController
   before_action :set_flavor, only: [:show, :edit, :update, :destroy]
-
+  authorize_resource
+  
   # GET /flavors
   # GET /flavors.json
   def index
     @flavors = Flavor.all
-    authorize! :index, @flavors
   end
 
   # GET /flavors/1

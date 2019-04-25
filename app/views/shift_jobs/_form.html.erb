@@ -15,8 +15,9 @@
 <div class="form-row">
   
       <div class="form-group col-md-4">
-      <label for="shift_id"><%= f.label :shift_id %></label>
-      <%= f.text_field :shift_id, :class => "form-control" %>
+
+      <%= f.input :shift_id, :class => "form-control", collection: Shift.active.all %>
+
       </div>
       
 

@@ -4,6 +4,17 @@ class DemosController < ApplicationController
     
     end
     
+    def employeedash
+        
+    end
+    
+    def managerdash
+        
+    end
+    
+    def admindash
+        
+    end
     
     def create
         puts params[:demo][:email]
@@ -12,11 +23,11 @@ class DemosController < ApplicationController
        if user && user.authenticate(params[:demo][:password])
            login(user)
         if logged_in? and current_user.role?(:employee)
-            redirect_to regulars_employees_path
+            redirect_to employeedash_path
         elsif logged_in? and current_user.role?(:admin)
-            redirect_to admins_employees_path
+            redirect_to admindash_path
         elsif logged_in? and current_user.role?(:manager)
-            redirect_to managers_employees_path
+            redirect_to managerdash_path
         else
             redirect_to home_path
         end
