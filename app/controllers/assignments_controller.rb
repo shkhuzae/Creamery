@@ -6,7 +6,7 @@ class AssignmentsController < ApplicationController
   # GET /assignments.json
   def index
     @assignments = Assignment.all
-    authorize! :index, @assignments
+
   end
 
   # GET /assignments/1

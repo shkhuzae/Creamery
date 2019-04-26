@@ -67,3 +67,30 @@
   
 </nav>
 </div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+
+      <th scope="col">Full Name</th>
+      <th scope="col">Account</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    
+      
+      
+        <tr>
+          <td><%= link_to current_user.employee.proper_name, employee_path(current_user.employee) %></td>
+          <td><%= link_to 'View Account', user_path(current_user) %></td>
+        </tr>
+      
+    
+    
+  </tbody>
+</table>
+
+
+<br />
+
+<br />

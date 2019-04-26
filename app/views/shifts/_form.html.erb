@@ -15,8 +15,15 @@
 <div class="form-row">
   
       <div class="form-group col-md-4">
+      <% if current_user.role? :admin %>
       
       <%= f.input :assignment_id, :class => "form-control", collection: Assignment.current.ids %>
+      <% else %>
+      
+      <%= f.input :assignment_id, :class => "form-control", collection: Assignment.for_store(current_user.employee.current_assignment.store_id).ids  %>
+      <% end %>
+      
+      
       </div>
       
       <div class="form-group col-md-4">

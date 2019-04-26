@@ -6,7 +6,7 @@ class ShiftsController < ApplicationController
   # GET /shifts.json
   def index
     @shifts = Shift.all
-    @shiftsmanager = Shift.by_employee(Employee.for_store(current_user.employee.current_assignment.store_id).active.alphabetical.paginate(page: params[:page]).per_page(10))
+    @shiftsmanager =  Shift.where(assignment_id: Assignment.for_store(current_user.employee.current_assignment.store_id))
   end
 
   # GET /shifts/1

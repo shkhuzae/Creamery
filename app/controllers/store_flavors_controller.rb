@@ -6,6 +6,7 @@ class StoreFlavorsController < ApplicationController
   # GET /store_flavors.json
   def index
     @store_flavors = StoreFlavor.all
+    @store_flavors_managers = StoreFlavor.where(store_id: current_user.employee.current_assignment.store_id)
   end
 
   # GET /store_flavors/1

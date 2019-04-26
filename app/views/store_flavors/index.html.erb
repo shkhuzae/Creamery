@@ -11,15 +11,28 @@
     </tr>
   </thead>
   <tbody>
-    
       
-      <% @store_flavors.each do |store_flavor| %>
-        <tr>
-          <td><%= link_to store_flavor.id, store_flavor_path(store_flavor) %></td>
-          <td><%= link_to 'Edit', edit_store_flavor_path(store_flavor), :class=> "btn btn-warning" %></td>
-          <td><%= link_to 'Destroy', store_flavor, confirm: 'Are you sure?', method: :delete, :class=> "btn btn-danger" %></td>
-        </tr>
+      <% if current_user.role? :admin %>
+
+          <% @store_flavors.each do |store_flavor| %>
+              <tr>
+                <td><%= link_to store_flavor.id, store_flavor_path(store_flavor) %></td>
+                <td><%= link_to 'Edit', edit_store_flavor_path(store_flavor), :class=> "btn btn-warning" %></td>
+                <td><%= link_to 'Destroy', store_flavor, confirm: 'Are you sure?', method: :delete, :class=> "btn btn-danger" %></td>
+              </tr>
+          <% end %>
+          
+      <% else %>
+
+          <% @store_flavors_managers.each do |store_flavor| %>
+          <tr>
+            <td><%= link_to store_flavor.id, store_flavor_path(store_flavor) %></td>
+            <td><%= link_to 'Edit', edit_store_flavor_path(store_flavor), :class=> "btn btn-warning" %></td>
+            <td><%= link_to 'Destroy', store_flavor, confirm: 'Are you sure?', method: :delete, :class=> "btn btn-danger" %></td>
+          </tr>
+          <% end %>
       <% end %>
+
     
     
   </tbody>

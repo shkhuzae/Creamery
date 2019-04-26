@@ -13,10 +13,15 @@
 
  <!--form attributes-->
 <div class="form-row">
-  
-      <div class="form-group col-md-4">
 
+      <div class="form-group col-md-4">
+      <% if current_user.role? :admin %>
+      
       <%= f.input :store_id, :class => "form-control", collection: Store.active.all %>
+      <% else %>
+      
+      <%= f.input :store_id, :class => "form-control", :input_html => { :value => Store.find(current_user.employee.current_assignment.store_id).id }  %>
+      <% end %>
       </div>
       
 

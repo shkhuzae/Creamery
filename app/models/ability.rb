@@ -115,7 +115,9 @@ class Ability
       can :read, Store
       can :read, Job
       can :read, Flavor
-
+      can :read, ShiftJob
+      can :read, Assignment
+      can :read, User
 
   else
       can :read, Store

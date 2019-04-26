@@ -6,6 +6,7 @@ class ShiftJobsController < ApplicationController
   # GET /shift_jobs.json
   def index
     @shift_jobs = ShiftJob.all
+    @shift_jobs_managers = ShiftJob.where(shift_id: Shift.where(assignment_id: Assignment.for_store(current_user.employee.current_assignment.store_id)).ids)
   end
 
   # GET /shift_jobs/1

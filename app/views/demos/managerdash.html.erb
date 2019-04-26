@@ -40,7 +40,7 @@
       </li>
     <li class="nav-item">
 
-        <a class="nav-link" href="/assignments">Assignments</a>
+        <a class="nav-link" href="/store_flavors">StoreFlavors</a>
 
       </li>
       
@@ -68,3 +68,36 @@
   
 </nav>
 </div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+
+      <th scope="col">Full Name</th>
+      <th scope="col">Account</th>
+      <th scope="col">Assignments</th>
+     <th scope="col">Shifts</th>
+     <th scope="col">Shift-Jobs</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+      
+      
+        <tr>
+          <td><%= link_to current_user.employee.proper_name, employee_path(current_user.employee) %></td>
+          <td><%= link_to 'View Account', user_path(current_user) %></td>
+          <td><%= link_to 'View Assignments', assignment_path(current_user.employee.current_assignment) %></td>
+          <td><%= link_to 'View Shifts', shift_path(Shift.where(assignment_id: Assignment.for_employee(current_user.employee)).ids) %></td>
+          <td><%= link_to 'View Shift-Jobs', shift_jobs_path(ShiftJob.where(shift_id: (Shift.where(assignment_id: Assignment.for_employee(current_user.employee)) ).ids).ids) %></td>
+        </tr>
+      
+    
+    
+  </tbody>
+</table>
+
+
+<br />
+
+<br />
