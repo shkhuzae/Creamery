@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html>
   <head>
+      <span class="nav-item">
+      <% if logged_in? %>
+      <%= link_to "logout", home_path %>
+   <% end %>
+      
+    </span>
       <script>
         function goBack() {
           window.history.back();

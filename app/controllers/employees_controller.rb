@@ -34,6 +34,7 @@ class EmployeesController < ApplicationController
   
   #view only active employees for a manager
   def active
+      @employeesadmin = Employee.active.alphabetical.paginate(page: params[:page]).per_page(10)
       @employees = Employee.for_store(current_user.employee.current_assignment.store_id).active.alphabetical.paginate(page: params[:page]).per_page(10)
   end
 

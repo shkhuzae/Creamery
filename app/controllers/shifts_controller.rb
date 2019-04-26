@@ -9,6 +9,30 @@ class ShiftsController < ApplicationController
     @shiftsmanager =  Shift.where(assignment_id: Assignment.for_store(current_user.employee.current_assignment.store_id))
   end
 
+  def by_store
+      @shifts = Shift.by_store.chronological.paginate(page: params[:page]).per_page(10)
+  end
+  
+  def by_employee
+      @shifts = Shift.by_employee.chronological.paginate(page: params[:page]).per_page(10)
+  end
+  
+  def past
+    @shifts = Shift.past.chronological.paginate(page: params[:page]).per_page(10)
+  end
+ 
+  def upcoming
+    @shifts = Shift.upcoming.chronological.paginate(page: params[:page]).per_page(10)
+  end 
+
+  def completed
+    @shifts = Shift.completed.chronological.paginate(page: params[:page]).per_page(10)
+  end
+  
+  def incomplete
+    @shifts = Shift.incomplete.chronological.paginate(page: params[:page]).per_page(10)
+  end
+  
   # GET /shifts/1
   # GET /shifts/1.json
   def show

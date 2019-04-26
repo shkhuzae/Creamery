@@ -9,6 +9,14 @@ class JobsController < ApplicationController
     
   end
 
+  def active
+    @jobs = Job.active
+  end
+
+  def inactive
+    @jobs = Job.inactive
+  end  
+  
   # GET /jobs/1
   # GET /jobs/1.json
   def show

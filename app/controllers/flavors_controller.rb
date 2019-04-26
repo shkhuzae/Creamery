@@ -8,6 +8,13 @@ class FlavorsController < ApplicationController
     @flavors = Flavor.all
   end
 
+  def active
+    @flavors = Flavor.active
+  end
+  
+  def inactive
+    @flavors = Flavor.inactive
+  end
   # GET /flavors/1
   # GET /flavors/1.json
   def show

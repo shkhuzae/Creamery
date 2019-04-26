@@ -1,4 +1,4 @@
-
+  <!--navigation bar-->
     <div class="container-fluid" >
 
 		    
@@ -12,30 +12,26 @@
     <ul class="navbar-nav mr-auto">
 
       <li class="nav-item">
-        <span class="nav-link"><%= link_to 'All', employees_path %></span> 
+        <span class="nav-link"><%= link_to 'Young', younger_employees_path %></span> 
       </li>
       <li class="nav-item">
-        <span class="nav-link"><%= link_to 'Younger than 18', younger_employees_path %></span> 
-      </li>
-      <li class="nav-item">
-       <span class="nav-link"><%= link_to '18 or Older', older_employees_path %></span> 
+        <span class="nav-link"><%= link_to 'Adults', older_employees_path %></span> 
       </li>
       <li class="nav-item">
        <span class="nav-link"><%= link_to 'Active', active_employees_path %></span> 
       </li>
       <li class="nav-item">
-       <span class="nav-link"><%= link_to 'Inactive', inactive_employees_path %></span> 
+       <span class="nav-link"><%= link_to 'Inactive', inactive_employees_path %></span>
       </li>
       <li class="nav-item">
-       <span class="nav-link"><%= link_to 'Regulars', regulars_employees_path %></span> 
+       <span class="nav-link"><%= link_to 'Employees', regulars_employees_path %></span>
       </li>
       <li class="nav-item">
-       <span class="nav-link"><%= link_to 'Managers', managers_employees_path %></span> 
+       <span class="nav-link"><%= link_to 'Managers', managers_employees_path %></span>
       </li>
       <li class="nav-item">
-       <span class="nav-link"><%= link_to 'Admins', admins_employees_path %></span> 
+       <span class="nav-link"><%= link_to 'Admins', admins_employees_path %></span>
       </li>
-
     </ul>
 
     
@@ -46,6 +42,8 @@
 
 
 
+
+<!--link to new employee-->
 <%= link_to 'New Employee', new_employee_path %>
 <table class="table table-striped">
   <thead>

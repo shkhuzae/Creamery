@@ -53,15 +53,8 @@
   </thead>
   <tbody>
     
-      <% if current_user.role? :manager %>
-      <% @shiftsmanager.each do |shift| %>
-        <tr>
-          <td><%= link_to shift.id, shift_path(shift) %></td>
-          <td><%= link_to 'Edit', edit_shift_path(shift), :class=> "btn btn-warning" %></td>
-          <td><%= link_to 'Destroy', shift, confirm: 'Are you sure?', method: :delete, :class=> "btn btn-danger" %></td>
-        </tr>
-      <% end %>
-      <% else %>
+
+
       <% @shifts.each do |shift| %>
         <tr>
           <td><%= link_to shift.id, shift_path(shift) %></td>
@@ -69,7 +62,7 @@
           <td><%= link_to 'Destroy', shift, confirm: 'Are you sure?', method: :delete, :class=> "btn btn-danger" %></td>
         </tr>
       <% end %>
-      <% end %>
+
     
     
   </tbody>

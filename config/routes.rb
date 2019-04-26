@@ -40,10 +40,18 @@ Rails.application.routes.draw do
   get 'past' => 'assignments#past', as: :past_assignments
   get 'by_store' => 'assignments#by_store', as: :bystore_assignments
   get 'by_employee' => 'assignments#by_employee', as: :byemployee_assignments
-  get 'for_store' => 'assignments#for_store', as: :forstore_assignments
-  get 'for_employee' => 'assignments#for_employee', as: :foremployee_assignments
-  get 'for_paylevel' => 'assignments#for_paylevel', as: :forpaylevel_assignments
-  get 'for_role' => 'assignments#for_role', as: :forrole_assignments
+
+  get 'active' => 'flavors#active', as: :active_flavors
+  get 'inactive' => 'flavors#inactive', as: :inactive_flavors 
   
+  get 'active' => 'jobs#active', as: :active_jobs
+  get 'inactive' => 'jobs#inactive', as: :inactive_jobs 
+  
+  get 'by_store' => 'shifts#by_store', as: :bystore_shifts
+  get 'by_employee' => 'shifts#by_employee', as: :byemployee_shifts
+  get 'past' => 'shifts#past', as: :past_shifts
+  get 'upcoming' => 'shifts#upcoming', as: :upcoming_shifts
+  get 'completed' => 'shifts#completed', as: :completed_shifts
+  get 'incomplete' => 'shifts#incomplete', as: :incomplete_shifts
   
 end

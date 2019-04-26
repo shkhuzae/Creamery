@@ -1,5 +1,3 @@
-<h4> Active Employees In Your Store</h4>
-
 
 
 <%= link_to 'New Employee', new_employee_path %>
@@ -15,14 +13,23 @@
   </thead>
   <tbody>
     
-      <% unless @employees.empty? %>
+      <% if current_user.role? :manager %>
       <% @employees.each do |employee| %>
         <tr>
           <td><%= link_to employee.name, employee_path(employee) %></td>
         </tr>
       <% end %>
+      
+      <% else %>
+      
+      <% unless @employees.empty? %>
+      <% @employeesadmin.each do |employee| %>
+        <tr>
+          <td><%= link_to employee.name, employee_path(employee) %></td>
+        </tr>
       <% end %>
-    
+      <% end %>
+      <% end %>
     
   </tbody>
 </table>
