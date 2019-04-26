@@ -1,31 +1,34 @@
-<p id="notice"><%= notice %></p>
 
-<h1>Users</h1>
-
-<table>
+<%= link_to 'New User', new_user_path %>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>Employee</th>
-      <th>Email</th>
-      <th>Password</th>
-      <th colspan="3"></th>
+
+      <th scope="col">User</th>
+      <th scope="col">Edit</th>
+      <th scope="col">Inactivate</th>
+ 
     </tr>
   </thead>
-
   <tbody>
-    <% @users.each do |user| %>
-      <tr>
-        <td><%= user.employee_id %></td>
-        <td><%= user.email %></td>
-        <td><%= user.password %></td>
-        <td><%= link_to 'Show', user %></td>
-        <td><%= link_to 'Edit', edit_user_path(user) %></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
+    
+      
+      <% @users.each do |user| %>
+        <tr><%= user.employee_id %>
+          <td><%= link_to user.email, user_path(user) %></td>
+          <td><%= link_to 'Edit', edit_user_path(user), :class=> "btn btn-warning" %></td>
+          <td><%= link_to 'Inactivate', user, confirm: 'Are you sure?', method: :delete, :class=> "btn btn-danger" %></td>
+        </tr>
+      <% end %>
+    
+    
   </tbody>
 </table>
 
-<br>
 
-<%= link_to 'New User', new_user_path %>
+<br />
+
+<br />
+
+
+
