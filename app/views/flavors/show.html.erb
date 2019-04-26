@@ -1,14 +1,32 @@
-<p id="notice"><%= notice %></p>
+<table class="table table-striped">
+  <thead>
+    <tr>
 
-<p>
-  <strong>Name:</strong>
-  <%= @flavor.name %>
-</p>
+      <th scope="col">Name</th>
+      <th scope="col">Active</th>
 
-<p>
-  <strong>Active:</strong>
-  <%= @flavor.active %>
-</p>
+    </tr>
+  </thead>
+  <tbody>
+    
+      
+      
+        <tr>
+          <td><%= @flavor.name %> </td>
+          <td><%= @flavor.active %></td>
+        </tr>
+      
+    
+    
+  </tbody>
+</table>
 
-<%= link_to 'Edit', edit_flavor_path(@flavor) %> |
+
+<br />
+
+
+<br />
+
+
+<%= link_to 'Edit', edit_flavor_path(@flavor), :class => 'btn btn-warning' %> |
 <%= link_to 'Back', flavors_path, :class => 'btn btn-secondary' %>

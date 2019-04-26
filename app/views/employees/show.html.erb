@@ -1,48 +1,42 @@
-<p id="notice"><%= notice %></p>
+<table class="table table-striped">
+  <thead>
+    <tr>
 
-<p>
-  <strong>First name:</strong>
-  <%= @employee.first_name %>
-</p>
+      <th scope="col">Full Name</th>
+      <th scope="col">SSN</th>
+      <th scope="col">Date Of Birth</th>
+     <th scope="col">Phone</th>
+     <th scope="col">Role</th>
+     <th scope="col">Active</th>
+     <th scope="col">Assignments</th>
+     <th scope="col">Store</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+      
+      
+        <tr>
+          <td><%= @employee.proper_name %> </td>
+          <td><%= @employee.ssn %></td>
+          <td><%= @employee.date_of_birth %></td>
+          <td><%= @employee.phone %></td>
+          <td><%= @employee.role %></td>
+          <td><%= @employee.active %></td>
+          <td><%= link_to 'View All', assignment_path(@employee.current_assignment) unless @employee.current_assignment.nil? %></td>
+          <td><%= link_to @employee.current_assignment.store.name, store_path(@employee.current_assignment.store) unless @employee.current_assignment.nil? %></td>
+        </tr>
+      
+    
+    
+  </tbody>
+</table>
 
-<p>
-  <strong>Last name:</strong>
-  <%= @employee.last_name %>
-</p>
 
-<p>
-  <strong>Ssn:</strong>
-  <%= @employee.ssn %>
-</p>
+<br />
 
-<p>
-  <strong>Date of birth:</strong>
-  <%= @employee.date_of_birth %>
-</p>
 
-<p>
-  <strong>Phone:</strong>
-  <%= @employee.phone %>
-</p>
+<br />
 
-<p>
-  <strong>Role:</strong>
-  <%= @employee.role %>
-</p>
-
-<p>
-  <strong>Active:</strong>
-  <%= @employee.active %>
-</p>
-<p>
-  <strong>Assignments:</strong>
-  <%= link_to 'View All', assignment_path(@employee.current_assignment) unless @employee.current_assignment.nil? %>
-
-</p>
-<p>
-  <strong>Currently Assigned:</strong>
-  <%= link_to @employee.current_assignment.store.name, store_path(@employee.current_assignment.store) unless @employee.current_assignment.nil? %>
-</p>
-
-<%= link_to 'Edit', edit_employee_path(@employee) %> |
+<%= link_to 'Edit', edit_employee_path(@employee), :class => 'btn btn-warning' %> |
 <%= link_to 'Back', employees_path, :class => 'btn btn-secondary' %>

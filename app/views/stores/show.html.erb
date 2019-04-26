@@ -1,49 +1,46 @@
-<p id="notice"><%= notice %></p>
+<table class="table table-striped">
+  <thead>
+    <tr>
 
-<p>
-  <strong>Name:</strong>
-  <%= @store.name %>
-</p>
+      <th scope="col">Name</th>
+      <th scope="col">Street</th>
+      <th scope="col">City</th>
+      <th scope="col">State</th>
+      <th scope="col">Zip</th>
+      <th scope="col">Phone</th>
+      <th scope="col">Latitude</th>
+      <th scope="col">Longitude</th>
+      <th scope="col">Active</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+      
+      
+        <tr>
+          <td><%= @store.name %> </td>
+          <td><%= @store.street %></td>
+          <td><%= @store.city %></td>
+          <td><%= @store.state %> </td>
+          <td><%= @store.zip %> </td>
+          <td><%= @store.phone %> </td>
+          <td><%= @store.latitude %> </td>
+          <td><%= @store.longitude %> </td>
+          <td><%= @store.active %> </td>
+        </tr>
+      
+    
+    
+  </tbody>
+</table>
 
-<p>
-  <strong>Street:</strong>
-  <%= @store.street %>
-</p>
 
-<p>
-  <strong>City:</strong>
-  <%= @store.city %>
-</p>
+<br />
 
-<p>
-  <strong>State:</strong>
-  <%= @store.state %>
-</p>
 
-<p>
-  <strong>Zip:</strong>
-  <%= @store.zip %>
-</p>
+<br />
 
-<p>
-  <strong>Phone:</strong>
-  <%= @store.phone %>
-</p>
 
-<p>
-  <strong>Latitude:</strong>
-  <%= @store.latitude %>
-</p>
 
-<p>
-  <strong>Longitude:</strong>
-  <%= @store.longitude %>
-</p>
-
-<p>
-  <strong>Active:</strong>
-  <%= @store.active %>
-</p>
-
-<%= link_to 'Edit', edit_store_path(@store) %> |
+<%= link_to 'Edit', edit_store_path(@store), :class => 'btn btn-warning' %> |
 <%= link_to 'Back', stores_path, :class => 'btn btn-secondary' %>

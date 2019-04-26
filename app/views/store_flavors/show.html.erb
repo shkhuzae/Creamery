@@ -1,14 +1,33 @@
-<p id="notice"><%= notice %></p>
+<table class="table table-striped">
+  <thead>
+    <tr>
 
-<p>
-  <strong>Store:</strong>
-  <%= @store_flavor.store_id %>
-</p>
+      <th scope="col">Store</th>
+      <th scope="col">Flavor</th>
 
-<p>
-  <strong>Flavor:</strong>
-  <%= @store_flavor.flavor_id %>
-</p>
+      
+    </tr>
+  </thead>
+  <tbody>
+    
+      
+      
+        <tr>
+          <td><%= @store_flavor.store_id %> </td>
+          <td><%= @store_flavor.flavor_id %></td>
+        </tr>
+      
+    
+    
+  </tbody>
+</table>
 
-<%= link_to 'Edit', edit_store_flavor_path(@store_flavor) %> |
+
+<br />
+
+
+<br />
+
+
+<%= link_to 'Edit', edit_store_flavor_path(@store_flavor), :class => 'btn btn-warning' %> |
 <%= link_to 'Back', store_flavors_path, :class => 'btn btn-secondary' %>

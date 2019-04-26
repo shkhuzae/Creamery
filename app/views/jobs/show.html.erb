@@ -1,19 +1,35 @@
-<p id="notice"><%= notice %></p>
+<table class="table table-striped">
+  <thead>
+    <tr>
 
-<p>
-  <strong>Name:</strong>
-  <%= @job.name %>
-</p>
+      <th scope="col">Name</th>
+      <th scope="col">Description</th>
+      <th scope="col">Active</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+    
+      
+      
+        <tr>
+          <td><%= @job.name %> </td>
+          <td><%= @job.description %></td>
+          <td><%= @job.active %></td>
+        </tr>
+      
+    
+    
+  </tbody>
+</table>
 
-<p>
-  <strong>Description:</strong>
-  <%= @job.description %>
-</p>
 
-<p>
-  <strong>Active:</strong>
-  <%= @job.active %>
-</p>
+<br />
 
-<%= link_to 'Edit', edit_job_path(@job) %> |
+
+<br />
+
+
+
+<%= link_to 'Edit', edit_job_path(@job), :class => 'btn btn-warning' %> |
 <%= link_to 'Back', jobs_path, :class => 'btn btn-secondary' %>
